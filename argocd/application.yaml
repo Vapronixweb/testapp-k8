@@ -1,26 +1,24 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: my-app
+  name: git-repo-name  ### git repo-name
   namespace: argocd
 spec:
   destination:
-    name: my-cluster
-    namespace: my-namespace
-    server: https://my-cluster-api-server
+    namespace: git-repo-name ## this can be changed
+    server: 'https://kubernetes.default.svc'
   source:
-    path: helm/
+    path: helm
     repoURL: git@github.com-vap:Vapronixweb/testapp-k8.git
     targetRevision: HEAD
-  project: my-project
+    helm:
+      valueFiles:
+        - values.yaml
+  project: default ####### project if any
   syncPolicy:
+    syncOptions:      
+    - CreateNamespace=true      
     automated:
       prune: true
       selfHeal: true
-  sync:
-    retries:
-      limit: 5
-      backoff:
-        duration: 10s
-        factor: 2
-        maxDuration: 5m
+

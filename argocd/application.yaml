@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: my-app
+  namespace: argocd
+spec:
+  destination:
+    name: my-cluster
+    namespace: my-namespace
+    server: https://my-cluster-api-server
+  source:
+    path: path/to/my/app
+    repoURL: git@github.com:my-org/my-repo.git
+    targetRevision: HEAD
+  project: my-project
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+  sync:
+    retries:
+      limit: 5
+      backoff:
+        duration: 10s
+        factor: 2
+        maxDuration: 5m

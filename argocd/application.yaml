@@ -1,12 +1,12 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: dssdevendrads
+  name: msv1
   namespace: argocd
 spec:
   destination:
     name: ''
-    namespace: default
+    namespace: msv1
     server: 'https://kubernetes.default.svc'
   source:
     path: helm
@@ -21,4 +21,5 @@ spec:
     automated:
       prune: false
       selfHeal: false
-
+    syncOptions:
+    - CreateNamespace=true

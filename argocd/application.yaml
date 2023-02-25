@@ -1,24 +1,24 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: git-repo-name  ### git repo-name
+  name: dssdevendrads
   namespace: argocd
 spec:
   destination:
-    namespace: git-repo-name ## this can be changed
+    name: ''
+    namespace: default
     server: 'https://kubernetes.default.svc'
   source:
     path: helm
-    repoURL: git@github.com-vap:Vapronixweb/testapp-k8.git
+    repoURL: 'https://github.com/Vapronixweb/testapp-k8.git'
     targetRevision: HEAD
     helm:
       valueFiles:
         - values.yaml
-  project: default ####### project if any
+  sources: []
+  project: default
   syncPolicy:
-    syncOptions:      
-    - CreateNamespace=true      
     automated:
-      prune: true
-      selfHeal: true
+      prune: false
+      selfHeal: false
 

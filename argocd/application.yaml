@@ -9,8 +9,8 @@ spec:
     namespace: my-namespace
     server: https://my-cluster-api-server
   source:
-    path: path/to/my/app
-    repoURL: git@github.com:my-org/my-repo.git
+    path: helm/
+    repoURL: git@github.com-vap:Vapronixweb/testapp-k8.git
     targetRevision: HEAD
   project: my-project
   syncPolicy:

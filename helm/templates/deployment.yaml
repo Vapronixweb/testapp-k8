@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ include "hello-world.fullname" . }}
-  #  namespace: {{ .Values.namespace }}
   labels:
     {{- include "hello-world.labels" . | nindent 4 }}
 spec:
@@ -24,11 +23,11 @@ spec:
             - name: http
               containerPort: 80
               protocol: TCP
-              #          livenessProbe:
-              #            httpGet:
-              #path: /
-              #port: http
-              #readinessProbe:
-              #httpGet:
-              #path: /
-              #port: http
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http

@@ -1,16 +1,18 @@
 # Default values for hello-world.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
+
 replicaCount: 1
 
 image:
-  repository: 412741421182.dkr.ecr.ap-southeast-1.amazonaws.com/k8-test
+  repository: nginx
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
 
 nameOverride: ""
 fullnameOverride: ""
+
 serviceAccount:
   # Specifies whether a service account should be created
   create: true
@@ -21,5 +23,5 @@ serviceAccount:
   name: ""
 
 service:
-  type: NodePort
+  type: ClusterIP
   port: 80

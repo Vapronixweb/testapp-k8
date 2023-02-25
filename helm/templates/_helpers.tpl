@@ -60,6 +60,3 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
-{{/*
-Create a namespace if it does not already exist
-*/}}

@@ -1,3 +1,3 @@
 <?php
-echo "Hello, new build 16:00";
+echo "Hello, new build 25th Feb";
 ?>
